@@ -10,6 +10,9 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    import('wasm').then(module => {
+      console.log(module)
+    })
     const size = 500;
     const svg = d3
       .select(this.myRef.current)
