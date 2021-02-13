@@ -38,6 +38,9 @@ jobs:
           wasm-pack build
           cd ..
 
-      - run: npm ci
-      - run: npm test
-      - run: npm run build
+      - run: |
+          cd rent_vs_buy
+          npm ci
+          npm test
+          npm run build
+          cd ..
