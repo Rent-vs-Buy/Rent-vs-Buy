@@ -1,1 +1,1 @@
-# rent_vs_buy
+# Rent-vs-Buy
