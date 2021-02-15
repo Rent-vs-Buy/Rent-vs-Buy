@@ -1,0 +1,37 @@
+
+name: CD
+
+
+on:
+  push:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: 15
+
+      - name: Install wasm-pack
+        uses: jetli/wasm-pack-action@v0.3.0
+
+      - run: |
+          cd wasm
+          wasm-pack build
+          cd ..
+
+      - run: |
+          cd rent_vs_buy
+          npm ci
+          npm run build
+          cd ..
+
+      - run: echo Here we deploy
